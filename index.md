@@ -1,37 +1,36 @@
-## Welcome to GitHub Pages
+## Fish Tank Solution Mixer v2
 
-You can use the [editor on GitHub](https://github.com/ViktorVektor/DavidTankMixerTwo/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+![image](https://user-images.githubusercontent.com/41247872/148147411-b339b851-8c2c-4e1a-be0a-d65fddac4911.png)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+The second iteration of the mini-project, purpose built for mixing a vat of calcium carbonate solution. The device fits onto the lid of the vat, where a mixing head dips into the solution. A time interval for its sleep and mixint time can be set. For this iteraiton, the speed of the mixing and the method of mixing can also be set. These settings are also now saved even when the device is powered off.
 
-### Markdown
+### Usage
+ 
+ Power: USB Micro B, at least 5V 200mA DC, USB from a common phone charger would suffice.
+ 
+ To turn on the device, simply plug in the USB. There is no power switching as a battery source is not included. When powered, the screen will turn on. Use the knob on the lid to select through the options:
+ 
+  - Sleep time: Time interval between mixes.
+  - Mix time:   Length of time to mix.
+  - Mix speed:  Rotational speed for mixing by adjusting the motor PWM.
+  - Mix mode:   The rotation method for mixing.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Settings will be saved between power cycles, but will still need to click through all the options. Note that for sleep time, it will exactly be what was set by the user, unlike in v1 where the mix time was subtracted from the sleep time. The device will go into a mix mode right away, then go to sleep. The display will show a message while asleep.
 
-```markdown
-Syntax highlighted code block
+### The Problem
 
-# Header 1
-## Header 2
-### Header 3
+An alkaline solution of calcium carbonate is used for the operation of a tropical fish tank. However, the solution becomes saturated with extra particulates settling at the bottom. 
 
-- Bulleted
-- List
+### Feedback from v1
 
-1. Numbered
-2. List
+The v1 solution mixer operated for about 3 months. It was reported that the motor had ceased to spin, but the device was still powered on.  It was concluded that the mode of failure was the modified servo motor burning out. FOr the power, the user found it best to only use USB power and did not use battery power. Another point of concern was the timing of the sleep intervals, where using the Arduino's internal timer was not accurate enough for both sleeping and mixing. A pilot light was desired as it was difficult to tell whether the device was powered on or not when asleep.
 
-**Bold** and _Italic_ and `Code` text
+### Design constraints
 
-[Link](url) and ![Image](src)
-```
+Learning from v1, the goal of this iteration will be to address the issues encountered.
 
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
 
-### Jekyll Themes
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ViktorVektor/DavidTankMixerTwo/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+
