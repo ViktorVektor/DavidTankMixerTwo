@@ -82,6 +82,9 @@ The curved bottom allows the fluid to pass over it, creating a high pressure zon
 
 ### Electronics
 
+This is the wiring diagram of the electronics in the device.
+
+![image](https://user-images.githubusercontent.com/41247872/148153470-d0489b33-72b0-49a9-bd55-07bf4acbf189.png)
 
 
 
