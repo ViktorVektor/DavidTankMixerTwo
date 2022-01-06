@@ -86,6 +86,15 @@ This is the wiring diagram of the electronics in the device.
 
 ![image](https://user-images.githubusercontent.com/41247872/148153470-d0489b33-72b0-49a9-bd55-07bf4acbf189.png)
 
+There are fewer overall components for this device. The through-hole resistors and transistors were deemed too bulky as they required a breadboard to be included in the device. The transistors were used in the first iteration mainly for power saving purposes, but it was deemed negligible compared to just switching digital pins on the Arduino itself. The resistors that were initially used for the encoder are now part of the breakout module the encoder is a part of as SMD's.
 
+To power the device, a 5V DC signal from the USB port is used. "High Power" components such as the motor driver, Arduino, and encoder were connected directly to the USB breakout board. Though not shown in the diagram, the encoder has an additional pin for VCC input. The "Low Power" RTC and display are connected to the Arduino for power. The display is connected to a digital pin being used as a switching power source. The maximum current draw for a digital pin is 40mA, but that display will draw no more than 30mA at peak operation. A capacitor was also added to smooth out current spikes during operation.
 
+The button and RTC interrupt pins are connected to D2 and D3 respectively, as they are the Arduino's interrupt-enabled pins. These are used to wake up the Arduino from sleep. The motor driver's IN1 and IN2 are connected to D5 and D6 for the Arduino's PWM capable pins. Note that the driver does not have additional "enable" pins, as the IN1/2 themselves enable the motor. This was another reason why this driver was chosen over other H-Bridges as it would save space.
+
+The RTC module required some modification in order to achieve the desired functinality. The Raspberry Pi RTC breakout board only utilizes the I2C buses on the DS3231, but the INT/SQW pin on the IC was needed. The module provides an additional unused female header, which was where the INT/SQW pin was connected to in a voltae division circuit with a 4.7k resistor.
+
+![image](https://user-images.githubusercontent.com/41247872/148360082-c349a41d-c309-4269-9dc9-3f803a6e9d2d.png)
+
+### Software
 
