@@ -98,3 +98,22 @@ The RTC module required some modification in order to achieve the desired functi
 
 ### Software
 
+The code can be found in this repository: https://github.com/ViktorVektor/DavidTankMixerTwo/blob/96e852c406bc31b08aba2f95c3dc9ad202b28758/David_Fish_Tank_Mixer_2_Final.ino
+
+The primary changes made from v1 were the timed operations and mixing operations. Since the transistor was removed for the display, the switching function was instead done through software. EEPROM was also used in order to save values between power cycles.
+
+For timed operations, the RTC provided its current time in seconds. When mixing, the desired time is calcualted in seconds and added to the start time. While mixing, the current time is compared with the end time, and will stop right away when that target time equals the current time. When sleeping, the Arduino prepares itself by turning off unecessary components like timers and the ADC to save power. It then takes the sleep time in seconds and calculates a wake up time, sending it to the RTC afterwards. The RTC is then configured to set an interrupt signal at the exact moment the target time is reached. The Arduino then goes to sleep and awaits the RTC's signal. Note that in all operations, the RTC is constantly powered, be it by the internal battery or the 5V USB source.
+
+In the mixing operations, control was changed to an H-Bridge PWM-based system. This allowed for rotation in either direction, so 2 more mixing modes were added. Churn 1 preiodically snaps back in the opposite direction, while Churn 2 turns in both directions in alternating intervals. 
+
+As per the feedback, the display is now always turned on even when asleep to indicate nominal operation.
+
+When updating settings on the device, the Arduino's EEPROM is accessed for this device. Due to the EEPROM's relatively limited write/erase cycles, they are only updated if the value is changed by the user. Reading does not affect the EEPROM's lifetime.
+
+Other sections of the code facilitate the encoder, display, and main operations of the device. New menus were added for the mix speed and mix mode.
+
+### Future Revisions
+
+In future revisions, I would like to try creating a custom PCB to further decrease the footprint of the device while still retaining its functionality. The display could also be upgraded to a 128x64 OLED. For the mixing head, proper fluid simulations would be preferred as it will give a better insight into which design is best before comitting to a physical prototype. Lastly, the nosie level of the device during operation could potentially be reduced by having a higher quality motor and gear assembly.
+
+last edit: Jan 6 2022
