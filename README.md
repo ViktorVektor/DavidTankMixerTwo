@@ -68,6 +68,10 @@ Internally, the layout of the components was made to maximize the available room
 
 The USB port is attached to the lid near the top, and the Arduino is fitted beside it to the right. On the bottom right, the OLED display is fitted into a slot. Taking up the most space in the middle is the motor (not modeled) and gearbox. Left of that is the motor driver, and above that is the RTC (a placeholder model was used). Attached to the lid above the RTC is the rotary encoder/button. This arrangement allowed for a large volume between the gearbox, Arduino, and RTC to be used for wiring.
 
+Here is an image of the actual layout:
+
+![image](https://user-images.githubusercontent.com/41247872/148364523-3783b2d2-7309-4f67-980a-abe972c0cc72.png)
+
 The mixing head and shaft were also modified. The shaft was split into two versions: a 25mm + 50mm connecting shaft, and a full 75mm shaft. This was done by adopting a thicker connector between the shafts. The shortened shaft as created mainly to better package the device for shipment, as this iteration was much bulkier on its sides than v1. 
 
 ![image](https://user-images.githubusercontent.com/41247872/148152808-7f7555ec-bc19-49f2-9e7b-e97a8c8a0903.png)
